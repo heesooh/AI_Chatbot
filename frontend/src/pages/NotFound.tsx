@@ -1,7 +1,7 @@
 import React from "react";
 
-const Header = () => {
-    return <div>Header</div>;
+const NotFound = () => {
+    return <div>NotFound</div>;
 };
 
-export default Header;
+export default NotFound;

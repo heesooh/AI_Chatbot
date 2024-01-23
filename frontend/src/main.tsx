@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 import { createTheme, ThemeProvider } from '@mui/material'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 const theme = createTheme(
   {
@@ -16,12 +16,13 @@ const theme = createTheme(
   }
 )
 
+// Create 'root', the entry point to
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <Router>
       <ThemeProvider theme={theme}>
         <App />
       </ThemeProvider>
-    </BrowserRouter>
+    </Router>
   </React.StrictMode>,
 )
