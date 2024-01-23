@@ -24,6 +24,34 @@ export const getAllUsers = async (
         }
 }
 
+const handleCookieAndToken = (res, existingUser) => {
+    res.clearCookie(
+        COOKIE_NAME,
+        {
+            path: "/",
+            domain: "localhost",
+            httpOnly: true,
+            signed: true,
+        }
+    );
+
+    const token = createToken(existingUser._id.toString(), existingUser.email, "7d");
+    const expires = new Date();
+    expires.setDate(expires.getDate() + 7);
+    
+    res.cookie(
+        COOKIE_NAME, 
+        token, 
+        {
+            path: "/",
+            domain: "localhost",
+            expires,
+            httpOnly: true,
+            signed: true,
+        }
+    );
+}
+
 export const userSignup = async (
     req:Request,
     res:Response,
@@ -39,30 +67,7 @@ export const userSignup = async (
             const user = new User({name, email, password:hashedPassword});
             await user.save() // save user to the MongoDB
 
-            res.clearCookie(
-                COOKIE_NAME,
-                {
-                    path: "/",
-                    domain: "localhost",
-                    httpOnly: true,
-                    signed: true,
-                }
-            );
-
-            const token = createToken(existingUser._id.toString(), existingUser.email, "7d");
-            const expires = new Date();
-            expires.setDate(expires.getDate() + 7);
-            res.cookie(
-                COOKIE_NAME, 
-                token, 
-                {
-                    path: "/",
-                    domain: "localhost",
-                    expires,
-                    httpOnly: true,
-                    signed: true,
-                }
-            );
+            handleCookieAndToken(res, existingUser);
 
             return res.status(201).json({
                 message: "OK",
@@ -94,30 +99,7 @@ export const userLogin = async (
                 return res.status(403).send("Incorrect password!");
             }
 
-            res.clearCookie(
-                COOKIE_NAME,
-                {
-                    path: "/",
-                    domain: "localhost",
-                    httpOnly: true,
-                    signed: true,
-                }
-            );
-
-            const token = createToken(existingUser._id.toString(), existingUser.email, "7d");
-            const expires = new Date();
-            expires.setDate(expires.getDate() + 7);
-            res.cookie(
-                COOKIE_NAME, 
-                token, 
-                {
-                    path: "/",
-                    domain: "localhost",
-                    expires,
-                    httpOnly: true,
-                    signed: true,
-                }
-            );
+            handleCookieAndToken(res, existingUser);
 
             return res.status(201).json({
                 message: "OK",
