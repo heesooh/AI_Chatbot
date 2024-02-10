@@ -46,7 +46,6 @@ const Header = () => {
                             />
                         </>
                     )}
-                        
                 </div>
             </Toolbar>
         </AppBar>

@@ -71,7 +71,8 @@ export const userSignup = async (
 
             return res.status(201).json({
                 message: "OK",
-                id: user._id.toString(),
+                name: user.name,
+                email: user.email,
             });
         } catch (error) {
             console.log(error);
@@ -103,7 +104,37 @@ export const userLogin = async (
 
             return res.status(201).json({
                 message: "OK",
-                id: existingUser._id.toString(),
+                name: existingUser.name,
+                email: existingUser.email,
+            });
+        } catch (error) {
+            console.log(error);
+            return res.status(500).json({
+                message: "ERROR",
+                cause: error.message,
+            });
+        }
+}
+
+// Veify user token
+export const verifyUser = async (
+    req:Request,
+    res:Response,
+    next:NextFunction
+    ) => {
+        try {
+            const existingUser = await User.findById(res.locals.jwtData.id);
+            if (!existingUser) {
+                return res.status(401).send("User not registed!");
+            }
+            if (existingUser._id.toString() !== res.locals.jwtData.id) {
+                return res.status(401).send("Invalid access token!");
+            }
+
+            return res.status(200).json({
+                message: "OK",
+                name: existingUser.name,
+                email: existingUser.email,
             });
         } catch (error) {
             console.log(error);
