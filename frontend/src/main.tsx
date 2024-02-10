@@ -33,8 +33,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <AuthProvider>
       <Router>
         <ThemeProvider theme={theme}>
-            <Toaster position="top-right"/>
-            <App />
+          <Toaster position="top-right"/>
+          <App />
         </ThemeProvider>
       </Router>
     </AuthProvider>
