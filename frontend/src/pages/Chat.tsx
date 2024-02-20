@@ -1,49 +1,30 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { Avatar, Box, Button, IconButton, Typography } from "@mui/material";
 import { useAuth } from "../context/AuthContext";
 import { red } from "@mui/material/colors";
 import ChatItem from "../components/chat/ChatItem";
 import { IoMdSend } from "react-icons/io";
-
-// Temporary Chat
-const chatMessages = [
-  { role: "User", content: "Hi there!" },
-  { role: "Assistant", content: "Hello! How can I assist you today?" },
-  { role: "User", content: "I need help with scheduling." },
-  {
-    role: "Assistant",
-    content:
-      "Sure, I can help with that. What specifically do you need assistance with?",
-  },
-  {
-    role: "User",
-    content: "I want to schedule a meeting for tomorrow at 3 PM.",
-  },
-  {
-    role: "Assistant",
-    content: "Got it. Let me check the availability for tomorrow at 3 PM.",
-  },
-  {
-    role: "Assistant",
-    content:
-      "The time slot is available. Shall I go ahead and schedule the meeting?",
-  },
-  { role: "User", content: "Yes, please." },
-  {
-    role: "Assistant",
-    content:
-      "Meeting scheduled successfully. Is there anything else I can assist you with?",
-  },
-  { role: "User", content: "No, that will be all. Thank you!" },
-  {
-    role: "Assistant",
-    content:
-      "You're welcome! Don't hesitate to reach out if you need help in the future. Have a great day!",
-  },
-];
-
+import { sendChatRequest } from "../helpers/api-communicators";
+type Message={
+    role: string,
+    content: string,
+}
 const Chat = () => {
   const auth = useAuth();
+  const inputRef = useRef<HTMLInputElement|null>(null);
+  const [chatMessages, setChatMessages] = useState<Message[]>([]);
+
+  const handleSubmit = async() => {
+    const content = inputRef.current?.value as string;
+    if (inputRef && inputRef.current) {
+        inputRef.current.value = "";
+    }
+    const newMessage = {role: "user", content};
+    setChatMessages((prev)=>[...prev, newMessage]);
+
+    const chatData = await sendChatRequest(content);
+    setChatMessages([...chatData.chats]);
+  }
   return (
     <Box
       sx={{
@@ -160,6 +141,7 @@ const Chat = () => {
         >
           {" "}
           <input
+            ref={inputRef}
             type="text"
             style={{
               width: "100%",
@@ -171,7 +153,7 @@ const Chat = () => {
               fontSize: "20pz",
             }}
           />
-          <IconButton sx={{ ml: "auto", color: "white" }}>
+          <IconButton onClick={handleSubmit} sx={{ ml: "auto", color: "white" }}>
             <IoMdSend />
           </IconButton>
         </div>
