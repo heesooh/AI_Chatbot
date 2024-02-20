@@ -27,3 +27,23 @@ export const sendChatRequest = async (message: string) => {
   const data = response.data;
   return data;
 };
+
+export const getUserChats = async () => {
+  const response = await axios.get("/chat/all-chats");
+  if (response.status !== 200) {
+    console.log("Failed to fetch chats!");
+    throw new Error("Unable to fetch chats!");
+  }
+  const data = response.data;
+  return data;
+};
+
+export const deleteChats = async () => {
+  const response = await axios.delete("/chat/delete");
+  if (response.status !== 200) {
+    console.log("Failed to delete chats!");
+    throw new Error("Unable to delete chats!");
+  }
+  const data = response.data;
+  return data;
+};

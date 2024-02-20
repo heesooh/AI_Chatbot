@@ -1,30 +1,62 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Avatar, Box, Button, IconButton, Typography } from "@mui/material";
 import { useAuth } from "../context/AuthContext";
 import { red } from "@mui/material/colors";
 import ChatItem from "../components/chat/ChatItem";
 import { IoMdSend } from "react-icons/io";
-import { sendChatRequest } from "../helpers/api-communicators";
-type Message={
-    role: string,
-    content: string,
-}
+import {
+  deleteChats,
+  getUserChats,
+  sendChatRequest,
+} from "../helpers/api-communicators";
+import toast from "react-hot-toast";
+type Message = {
+  role: string;
+  content: string;
+};
 const Chat = () => {
   const auth = useAuth();
-  const inputRef = useRef<HTMLInputElement|null>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const [chatMessages, setChatMessages] = useState<Message[]>([]);
 
-  const handleSubmit = async() => {
+  const handleSubmit = async () => {
     const content = inputRef.current?.value as string;
     if (inputRef && inputRef.current) {
-        inputRef.current.value = "";
+      inputRef.current.value = "";
     }
-    const newMessage = {role: "user", content};
-    setChatMessages((prev)=>[...prev, newMessage]);
+    const newMessage = { role: "user", content };
+    setChatMessages((prev) => [...prev, newMessage]);
 
     const chatData = await sendChatRequest(content);
     setChatMessages([...chatData.chats]);
-  }
+  };
+
+  useLayoutEffect(() => {
+    if (auth?.isLoggedIn && auth.user) {
+      toast.loading("Loading Chats", { id: "loadchats" });
+      getUserChats()
+        .then((data) => {
+          setChatMessages([...data.chats]);
+          toast.success("Successfully Loaded Chats", { id: "loadchats" });
+        })
+        .catch((err) => {
+          console.log(err);
+          toast.error("Failed to load chats", { id: "loadchats" });
+        });
+    }
+  }, [auth]);
+
+  const handleDeleteChats = async () => {
+    try {
+      toast.loading("Deleting Chats", { id: "deletechats" });
+      await deleteChats();
+      setChatMessages([]);
+      toast.success("Successfully deeleted all chats", { id: "deletechats" });
+    } catch (error) {
+      toast.error("Failed to delete chats", { id: "deletechats" });
+    }
+  };
+
   return (
     <Box
       sx={{
@@ -74,6 +106,7 @@ const Chat = () => {
             You can ask any questions!
           </Typography>
           <Button
+            onClick={handleDeleteChats}
             sx={{
               width: "200px",
               my: "auto",
@@ -153,7 +186,10 @@ const Chat = () => {
               fontSize: "20pz",
             }}
           />
-          <IconButton onClick={handleSubmit} sx={{ ml: "auto", color: "white" }}>
+          <IconButton
+            onClick={handleSubmit}
+            sx={{ ml: "auto", color: "white" }}
+          >
             <IoMdSend />
           </IconButton>
         </div>
