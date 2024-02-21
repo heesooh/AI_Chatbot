@@ -67,7 +67,7 @@ export const userSignup = async (
             const user = new User({name, email, password:hashedPassword});
             await user.save() // save user to the MongoDB
 
-            handleCookieAndToken(res, existingUser);
+            handleCookieAndToken(res, user);
 
             return res.status(201).json({
                 message: "OK",
