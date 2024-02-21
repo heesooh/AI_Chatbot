@@ -78,9 +78,9 @@ const Signup = () => {
                   name="password"
                   label="Password"
                 />
-                <button className="btn" type="submit">
+                <button className="log-btn" type="submit">
                   <svg
-                    className="svgIcon"
+                    className="log-svgIcon"
                     viewBox="0 0 512 512"
                     height="1em"
                     xmlns="http://www.w3.org/2000/svg"

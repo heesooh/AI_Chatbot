@@ -80,13 +80,14 @@ const Chat = () => {
           display: { md: "felex", xs: "none", sm: "none" },
           flex: 0.2,
           flexDirection: "column",
+          mt: 11,
         }}
       >
         <Box
           sx={{
             display: "flex",
             width: "100%",
-            height: "60vh",
+            height: "100%",
             bgcolor: "rgb(17,29,39)",
             borderRadius: 5,
             flexDirection: "column",
