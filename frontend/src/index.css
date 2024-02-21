@@ -2,9 +2,12 @@ html,
 body{
   margin: 0;
   padding: 0;
-  background: #05101c;
+  background-image: linear-gradient(to bottom right, rgb(50, 36, 64), rgb(18, 33, 66), rgb(23, 34, 67), rgb(5, 12, 22));
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
   color: white;
-  font-family: "Roboto Slab", serif;
+  font-family: "gill sans", san-serif;
 }
 
 /* Logo.tsx */
@@ -29,3 +32,221 @@ body{
 .MuiOutlinedInput-notchedOutline {
   border-color: white !important;
 }
+
+/* Login/Signup Card Sliding Motion */
+.slide-top{
+  -webkit-animation:slide-top 0.6s cubic-bezier(.25,.46,.45,.94) both;
+  animation:slide-top 0.6s cubic-bezier(.25,.46,.45,.94) both
+}
+
+@-webkit-keyframes slide-top{
+  0%{
+    -webkit-transform:translateY(0);
+    transform:translateY(0)
+  }
+  100%{
+    -webkit-transform:translateY(-150px);
+    transform:translateY(-150px)
+  }
+}
+
+@keyframes slide-top{
+  0%{
+    -webkit-transform:translateY(0);
+    transform:translateY(0)
+  }
+  100%{
+    -webkit-transform:translateY(-150px);
+    transform:translateY(-150px)
+  }
+}
+
+/* Login/Signup Card Wave */
+.e-card {
+  margin: auto;
+  background: transparent;
+  box-shadow: 10px 10px 20px #011;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.wave {
+  position: absolute;
+  width: 700px;
+  height: 900px;
+  opacity: 0.6;
+  margin-top: -70%;
+  background: linear-gradient(to right,#af40ff,#5b42f3 60%,#00ddeb);
+  /* background: linear-gradient(to right, #00FFA3, #3f93bf, #DC1FFF); */
+  /* background: linear-gradient(744deg,rgb(156, 103, 178),rgb(47, 79, 144) 60%); */
+}
+
+.wave:nth-child(2){
+  width: 600px;
+  height: 600px;
+  top: 400px;
+}
+.wave:nth-child(3) {
+  top: 150px;
+}
+
+.playing .wave {
+  border-radius: 40%;
+  animation: wave 12000ms infinite linear;
+}
+
+.wave {
+  border-radius: 40%;
+  animation: wave 55s infinite linear;
+}
+
+.playing .wave:nth-child(2) {
+  animation-duration: 10000ms;
+}
+
+.wave:nth-child(2) {
+  animation-duration: 50s;
+}
+
+.playing .wave:nth-child(3) {
+  animation-duration: 7000ms;
+}
+
+.wave:nth-child(3) {
+  animation-duration: 45s;
+}
+
+@keyframes wave {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Login/Signup Button Animation */
+.log-btn {
+  margin-top: 12px;
+  padding: 1rem 2rem;
+  font-weight: 700;
+  font-size: 20px;
+  background: rgb(255, 255, 255);
+  color: blueviolet;
+  border-radius: .5rem;
+  border-bottom: 2px solid blueviolet;
+  border-right: 2px solid blueviolet;
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+  transition-duration: 0.5s;
+  transition-property: border-top, 
+     border-left, 
+     border-bottom,
+     border-right,
+     box-shadow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
+ 
+ .log-btn:hover {
+  border-top: 2px solid blueviolet;
+  border-left: 2px solid blueviolet;
+  border-bottom: 2px solid rgb(238, 103, 238);
+  border-right: 2px solid rgb(238, 103, 238);
+  box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px;
+ }
+
+.log-svgIcon {
+  height: 25px;
+  transition-duration: 1.2s;
+  margin-right: 10px;
+}
+
+.log-btn:hover .log-svgIcon {
+  transform: rotate(-270deg);
+  transition-duration: 1.2s;
+}
+
+/* Header Button Animation */
+.header-btn {
+  position: relative;
+  padding: 10px 20px;
+  border-radius: 7px;
+  border: 2px solid rgb(133, 84, 182);
+  box-shadow: 2px 2px 0 0 rgba(81, 55, 176, 0.645);
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 2px;
+  background: transparent;
+  color: #fff;
+  overflow: hidden;
+  /* box-shadow: 0 0 0 0 transparent; */
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+.header-btn:hover {
+  /* background: rgb(147, 56, 251); */
+  background: linear-gradient(to right, rgb(147, 56, 251), #DC1FFF);
+  box-shadow: 0 0 10px 5px rgba(124, 46, 214, 0.827);
+  border: 2px solid rgb(147, 56, 251);
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+.header-btn:hover::before {
+  -webkit-animation: sh02 0.5s 0s linear;
+  -moz-animation: sh02 0.5s 0s linear;
+  animation: sh02 0.5s 0s linear;
+}
+
+.header-btn::before {
+  content: '';
+  display: block;
+  width: 0px;
+  height: 86%;
+  position: absolute;
+  top: 7%;
+  left: 0%;
+  opacity: 0;
+  background: #fff;
+  box-shadow: 0 0 50px 30px #fff;
+  -webkit-transform: skewX(-20deg);
+  -moz-transform: skewX(-20deg);
+  -ms-transform: skewX(-20deg);
+  -o-transform: skewX(-20deg);
+  transform: skewX(-20deg);
+}
+
+@keyframes sh02 {
+  from {
+    opacity: 0;
+    left: 0%;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    left: 100%;
+  }
+}
+
+.header-btn:active {
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: box-shadow 0.2s ease-in;
+  -moz-transition: box-shadow 0.2s ease-in;
+  transition: box-shadow 0.2s ease-in;
+}
+ 

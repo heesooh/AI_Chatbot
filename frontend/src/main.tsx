@@ -18,7 +18,7 @@ import { Toaster } from 'react-hot-toast'
 const theme = createTheme(
   {
     typography:{
-      fontFamily: "Roboto Slab, serif", 
+      fontFamily: "gill sans, san-serif", 
       allVariants: {
         color: "white"
       },
@@ -33,7 +33,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <AuthProvider>
       <Router>
         <ThemeProvider theme={theme}>
-          <Toaster position="top-right"/>
+          <Toaster position="top-center"/>
           <App />
         </ThemeProvider>
       </Router>

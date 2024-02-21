@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Avatar, Box, Button, IconButton, Typography } from "@mui/material";
 import { useAuth } from "../context/AuthContext";
 import { red } from "@mui/material/colors";
@@ -80,13 +80,14 @@ const Chat = () => {
           display: { md: "felex", xs: "none", sm: "none" },
           flex: 0.2,
           flexDirection: "column",
+          mt: 11,
         }}
       >
         <Box
           sx={{
             display: "flex",
             width: "100%",
-            height: "60vh",
+            height: "100%",
             bgcolor: "rgb(17,29,39)",
             borderRadius: 5,
             flexDirection: "column",
