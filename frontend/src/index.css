@@ -2,9 +2,9 @@ html,
 body{
   margin: 0;
   padding: 0;
-  background: #05101c;
-  color: white;
-  font-family: "Roboto Slab", serif;
+  background-image: linear-gradient(to right, rgb(15,20,28), rgb(23,33,46), rgb(21, 28, 39), rgb(27, 39, 54));
+  color: #ffeba7;
+  font-family: "gill sans", san-serif;
 }
 
 /* Logo.tsx */
@@ -29,3 +29,142 @@ body{
 .MuiOutlinedInput-notchedOutline {
   border-color: white !important;
 }
+
+/* Login Sliding Motion */
+.slide-top{
+  -webkit-animation:slide-top 0.6s cubic-bezier(.25,.46,.45,.94) both;
+  animation:slide-top 0.6s cubic-bezier(.25,.46,.45,.94) both
+}
+
+@-webkit-keyframes slide-top{
+  0%{
+    -webkit-transform:translateY(0);
+    transform:translateY(0)
+  }
+  100%{
+    -webkit-transform:translateY(-250px);
+    transform:translateY(-250px)
+  }
+}
+
+@keyframes slide-top{
+  0%{
+    -webkit-transform:translateY(0);
+    transform:translateY(0)
+  }
+  100%{
+    -webkit-transform:translateY(-250px);
+    transform:translateY(-250px)
+  }
+}
+
+/* Login/Signup Card */
+.e-card {
+  margin: auto;
+  background: transparent;
+  box-shadow: 10px 10px 20px #011;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.wave {
+  position: absolute;
+  width: 700px;
+  height: 900px;
+  opacity: 0.6;
+  margin-top: -70%;
+  background: linear-gradient(744deg,#af40ff,#5b42f3 60%,#00ddeb);
+}
+
+.wave:nth-child(2){
+  width: 600px;
+  height: 600px;
+  top: 400px;
+}
+.wave:nth-child(3) {
+  top: 150px;
+}
+
+.playing .wave {
+  border-radius: 40%;
+  animation: wave 12000ms infinite linear;
+}
+
+.wave {
+  border-radius: 40%;
+  animation: wave 55s infinite linear;
+}
+
+.playing .wave:nth-child(2) {
+  animation-duration: 10000ms;
+}
+
+.wave:nth-child(2) {
+  animation-duration: 50s;
+}
+
+.playing .wave:nth-child(3) {
+  animation-duration: 7000ms;
+}
+
+.wave:nth-child(3) {
+  animation-duration: 45s;
+}
+
+@keyframes wave {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Login/Signup Button */
+.btn {
+  margin-top: 12px;
+  padding: 1rem 2rem;
+  font-weight: 700;
+  font-size: 20px;
+  background: rgb(255, 255, 255);
+  color: blueviolet;
+  border-radius: .5rem;
+  border-bottom: 2px solid blueviolet;
+  border-right: 2px solid blueviolet;
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+  transition-duration: 0.5s;
+  transition-property: border-top, 
+     border-left, 
+     border-bottom,
+     border-right,
+     box-shadow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
+ 
+ .btn:hover {
+  border-top: 2px solid blueviolet;
+  border-left: 2px solid blueviolet;
+  border-bottom: 2px solid rgb(238, 103, 238);
+  border-right: 2px solid rgb(238, 103, 238);
+  box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px;
+ }
+
+.svgIcon {
+  height: 25px;
+  transition-duration: 1.5s;
+  margin-right: 10px;
+}
+
+.btn:hover .svgIcon {
+  transform: rotate(250deg);
+  transition-duration: 1.5s;
+}
+
