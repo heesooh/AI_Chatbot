@@ -2,7 +2,10 @@ html,
 body{
   margin: 0;
   padding: 0;
-  background-image: linear-gradient(to right, rgb(50, 36, 64), rgb(18, 33, 66), rgb(23, 34, 67), rgb(5, 12, 22));
+  background-image: linear-gradient(to bottom right, rgb(50, 36, 64), rgb(18, 33, 66), rgb(23, 34, 67), rgb(5, 12, 22));
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
   color: white;
   font-family: "gill sans", san-serif;
 }
@@ -30,7 +33,7 @@ body{
   border-color: white !important;
 }
 
-/* Login Sliding Motion */
+/* Login/Signup Card Sliding Motion */
 .slide-top{
   -webkit-animation:slide-top 0.6s cubic-bezier(.25,.46,.45,.94) both;
   animation:slide-top 0.6s cubic-bezier(.25,.46,.45,.94) both
@@ -42,8 +45,8 @@ body{
     transform:translateY(0)
   }
   100%{
-    -webkit-transform:translateY(-250px);
-    transform:translateY(-250px)
+    -webkit-transform:translateY(-150px);
+    transform:translateY(-150px)
   }
 }
 
@@ -53,12 +56,12 @@ body{
     transform:translateY(0)
   }
   100%{
-    -webkit-transform:translateY(-250px);
-    transform:translateY(-250px)
+    -webkit-transform:translateY(-150px);
+    transform:translateY(-150px)
   }
 }
 
-/* Login/Signup Card */
+/* Login/Signup Card Wave */
 .e-card {
   margin: auto;
   background: transparent;
@@ -127,7 +130,7 @@ body{
   }
 }
 
-/* Login/Signup Button */
+/* Login/Signup Button Animation */
 .log-btn {
   margin-top: 12px;
   padding: 1rem 2rem;
@@ -161,21 +164,21 @@ body{
 
 .log-svgIcon {
   height: 25px;
-  transition-duration: 1.5s;
+  transition-duration: 1.2s;
   margin-right: 10px;
 }
 
-.log-btn:hover .svgIcon {
-  transform: rotate(250deg);
-  transition-duration: 1.5s;
+.log-btn:hover .log-svgIcon {
+  transform: rotate(-270deg);
+  transition-duration: 1.2s;
 }
 
-/* Header buttons */
+/* Header Button Animation */
 .header-btn {
   position: relative;
   padding: 10px 20px;
   border-radius: 7px;
-  border: 2px solid rgb(81, 55, 176);
+  border: 2px solid rgb(133, 84, 182);
   box-shadow: 2px 2px 0 0 rgba(81, 55, 176, 0.645);
   font-size: 14px;
   text-transform: uppercase;
@@ -246,3 +249,4 @@ body{
   -moz-transition: box-shadow 0.2s ease-in;
   transition: box-shadow 0.2s ease-in;
 }
+ 

@@ -33,7 +33,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <AuthProvider>
       <Router>
         <ThemeProvider theme={theme}>
-          <Toaster position="top-right"/>
+          <Toaster position="top-center"/>
           <App />
         </ThemeProvider>
       </Router>

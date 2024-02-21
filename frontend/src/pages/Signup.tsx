@@ -41,7 +41,7 @@ const Signup = () => {
           alignItems={"center"}
           padding={2}
           ml={"auto"}
-          mt={56}
+          mt={46}
         >
           <div className="e-card playing" style={{  width: "550px", height: "500px"}}>
             <div className="wave"></div>
