@@ -528,18 +528,17 @@ body{
 
   width: 100%;
   height: 800px;
-
-  /* background-color: #00ddeb; */
 }
 
 .home-top video {
   width: 100%;
   max-height: 500px;
-  background-color: #5b42f3;
+  min-height: 384px;
 }
 
 .home-top-text {
   width: 30%;
+  min-width: 500px;
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -1144,7 +1143,8 @@ body{
 /* Home Card */
 .home-card {
   --background: linear-gradient(to left, #2b79f7 0%, #ea5358 100%);
-  width: 30%;
+  min-width: 420px;
+  width: 500px;
   height: 500px;
   padding: 5px;
   border-radius: 1rem;

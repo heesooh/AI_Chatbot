@@ -15,9 +15,11 @@ const Home = () => {
       <div className="home-top">
         <Box
           sx={{
-            width: "45%",
+            width: "33%",
             height: "45%",
+            minWidth: "700px",
             display: { md: "felex", xs: "none", sm: "none" },
+            justifyContent: "end",
           }}
         >
           <video
