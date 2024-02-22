@@ -29,9 +29,10 @@ const handleCookieAndToken = (res, existingUser) => {
         COOKIE_NAME,
         {
             path: "/",
-            domain: "heesoo-hwang.onrender.com",
+            domain: ".onrender.com",
             httpOnly: true,
             signed: true,
+            secure: true,
         }
     );
 
@@ -44,10 +45,11 @@ const handleCookieAndToken = (res, existingUser) => {
         token, 
         {
             path: "/",
-            domain: "heesoo-hwang.onrender.com",
+            domain: ".onrender.com",
             expires,
             httpOnly: true,
             signed: true,
+            secure: true,
         }
     );
 }
@@ -163,9 +165,10 @@ export const userLogout = async (
                 COOKIE_NAME,
                 {
                     path: "/",
-                    domain: "heesoo-hwang.onrender.com",
+                    domain: ".onrender.com",
                     httpOnly: true,
                     signed: true,
+                    secure: true,
                 }
             );
 
