@@ -9,7 +9,7 @@ import { AuthProvider } from './context/AuthContext.tsx'
 import axios from "axios";
 // base backend URL
 // axios.defaults.baseURL = "http://localhost:5000/api/v1";
-axios.defaults.baseURL = "https://heesoo-hwang-backend.onrender.com/api/v1";
+axios.defaults.baseURL = "https://heesoohwang-backend.onrender.com/api/v1";
 
 // base configuration: withCredentials allow setting and 
 // exchanging the cookie directly from the backend.
