@@ -10,7 +10,8 @@ const app = express();
 
 // middlewares:
 // whitelist frontend port 5173
-app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+// app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+app.use(cors({ origin: "https://heesoo-hwang-backend.onrender.com", credentials: true }));
 
 // JSON parser
 app.use(express.json());
