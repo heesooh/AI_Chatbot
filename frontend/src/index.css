@@ -249,4 +249,244 @@ body{
   -moz-transition: box-shadow 0.2s ease-in;
   transition: box-shadow 0.2s ease-in;
 }
+
+/* Clear Chat Button */
+.clearChat-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgb(255, 255, 255);
+  border: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+  cursor: pointer;
+  transition-duration: .3s;
+  overflow: hidden;
+  position: relative;
+}
+
+.clearChat-svgIcon {
+  width: 20px;
+  transition-duration: .4s;
+}
+
+.clearChat-btn:hover {
+  width: 140px;
+  border-radius: 15px;
+  transition-duration: .8s;
+  background-color: rgb(255, 69, 69);
+  align-items: center;
+}
+
+.clearChat-btn:hover .clearChat-svgIcon {
+  width: 50px;
+  transition-duration: .8s;
+  transform: translateY(60%);
+  fill: rgb(255, 255, 255);
+}
+
+.clearChat-btn::before {
+  position: absolute;
+  top: -20px;
+  content: "Delete";
+  color: white;
+  transition-duration: .8s;
+  font-size: 2px;
+}
+
+.clearChat-btn:hover::before {
+  font-size: 13px;
+  opacity: 1;
+  transform: translateY(30px);
+  transition-duration: .8s;
+}
+
+.chat-container {
+  width: 100%;
+  height: 60vh;
+  border-radius: 3px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  scroll-behavior: smooth;
+}
+
+/* Transparent Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 5px;
+}
+
+:-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Chat Input */
+.chat-input {
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: #fff;
+  background-color: rgb(28,28,30);
+  box-shadow: 0 0 .4vw rgba(0,0,0,0.5), 0 0 0 .15vw transparent;
+  border-radius: 0.4vw;
+  border: none;
+  outline: none;
+  padding: 1vw;
+  /* max-width: 190px; */
+  transition: .4s;
+  margin-left: 20px;
+  background-color: transparent;
+  width: 100%;
+}
+
+.chat-input:hover {
+  box-shadow: 0 0 0 .15vw rgba(135, 207, 235, 0.186);
+}
+
+.chat-input:focus {
+  box-shadow: 0 0 0 .15vw skyblue;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* background-color: blue; */
+}
+
+/* Chat Left Container */
+.chat-leftContainer {
+  display: flex;
+  width: 220px;
+  margin-top: 70px;
+  margin-left: 40px;
+  transition: all 0.2s;
+  position: relative;
+  cursor: pointer;
+}
+
+.chat-leftContainerInner {
+  width: inherit;
+  height: inherit;
+  background: rgba(255,255,255,.05);
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  /* background-color: #00ddeb; */
+}
+
+.chat-leftContainer:hover {
+  transform: scale(1.04) rotate(1deg);
+}
+
+.chat-leftContainerCircle {
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(#af40ff,#5b42f3 60%,#00ddeb);
+  border-radius: 50%;
+  position: absolute;
+  animation: move-up6 2s ease-in infinite alternate-reverse;
+}
+
+.chat-leftContainerCircle:nth-child(1) {
+  top: -25px;
+  left: -25px;
+}
+
+.chat-leftContainerCircle:nth-child(2) {
+  bottom: -25px;
+  right: -25px;
+  animation-name: move-down1;
+}
+
+@keyframes move-up6 {
+  to {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes move-down1 {
+  to {
+    transform: translateY(20px);
+  }
+}
+
+/* Chat Delete Button */
+.chatDelete-btn {
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  /* justify-content: space-evenly; */
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+  background: #b42525;
+  margin: auto;
+ }
  
+ .chatDelete-btn span {
+  transition: 200ms;
+ }
+ 
+ .chatDelete-btn-text {
+  transform: translateX(13px);
+  color: white;
+  font-weight: 700;
+  font-size: 12px;
+  /* margin-left: -25px; */
+ }
+ 
+ .chatDelete-btn-icon {
+  position: absolute;
+  border-left: 1px solid #902121;
+  transform: translateX(105px);
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* margin-left: -25px; */
+ }
+ 
+ .chatDelete-btn svg {
+  width: 15px;
+  fill: #eee;
+ }
+ 
+ .chatDelete-btn:hover {
+  background: #bf2828;
+ }
+ 
+ .chatDelete-btn:hover .chatDelete-btn-text {
+  color: transparent;
+ }
+ 
+ .chatDelete-btn:hover .chatDelete-btn-icon {
+  width: 150px;
+  border-left: none;
+  transform: translateX(0);
+ }
+ 
+ .chatDelete-btn:focus {
+  outline: none;
+ }
+ 
+ .chatDelete-btn:active .chatDelete-btn-icon svg {
+  transform: scale(1);
+ }
