@@ -1,6 +1,11 @@
 import axios from "axios";
+
+const axiosInstance = axios.create({
+  withCredentials: true
+});
+
 export const signupUser = async (name: string, email: string, password: string) => {
-  const response = await axios.post("/user/signup", { name, email, password });
+  const response = await axiosInstance.post("/user/signup", { name, email, password });
   if (response.status !== 201) {
     throw new Error("Unable to singup");
   }
@@ -9,7 +14,7 @@ export const signupUser = async (name: string, email: string, password: string) 
 };
 
 export const loginUser = async (email: string, password: string) => {
-  const response = await axios.post("/user/login", { email, password });
+  const response = await axiosInstance.post("/user/login", { email, password });
   if (response.status !== 201) {
     throw new Error("Unable to login");
   }
@@ -18,7 +23,7 @@ export const loginUser = async (email: string, password: string) => {
 };
 
 export const checkAuthStatus = async () => {
-  const response = await axios.get("/user/auth-status");
+  const response = await axiosInstance.get("/user/auth-status");
   if (response.status !== 200) {
     console.log("Failed to authenticate!");
     throw new Error("Unable to authenticate!");
@@ -28,7 +33,7 @@ export const checkAuthStatus = async () => {
 };
 
 export const sendChatRequest = async (message: string) => {
-  const response = await axios.post("/chat/new", {message});
+  const response = await axiosInstance.post("/chat/new", {message});
   if (response.status !== 200) {
     console.log("Failed to send chat!");
     throw new Error("Unable to send chat!");
@@ -38,7 +43,7 @@ export const sendChatRequest = async (message: string) => {
 };
 
 export const getUserChats = async () => {
-  const response = await axios.get("/chat/all-chats");
+  const response = await axiosInstance.get("/chat/all-chats");
   if (response.status !== 200) {
     console.log("Failed to fetch chats!");
     throw new Error("Unable to fetch chats!");
@@ -48,7 +53,7 @@ export const getUserChats = async () => {
 };
 
 export const deleteChats = async () => {
-  const response = await axios.delete("/chat/delete");
+  const response = await axiosInstance.delete("/chat/delete");
   if (response.status !== 200) {
     console.log("Failed to delete chats!");
     throw new Error("Unable to delete chats!");
@@ -58,7 +63,7 @@ export const deleteChats = async () => {
 };
 
 export const logoutUser = async () => {
-  const response = await axios.get("/user/logout");
+  const response = await axiosInstance.get("/user/logout");
   if (response.status !== 200) {
     console.log("Failed to logout!");
     throw new Error("Unable to logout!");
