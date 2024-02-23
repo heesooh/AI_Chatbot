@@ -8,7 +8,7 @@ import { AuthProvider } from './context/AuthContext.tsx'
 // send API request from front to back
 import axios from "axios";
 // base backend URL
-axios.defaults.baseURL = "http://localhost:5000";
+axios.defaults.baseURL = "http://18.191.31.73/api";
 // base configuration: withCredentials allow setting and 
 // exchanging the cookie directly from the backend.
 axios.defaults.withCredentials = true;

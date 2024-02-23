@@ -29,7 +29,7 @@ const handleCookieAndToken = (res, existingUser) => {
         COOKIE_NAME,
         {
             path: "/",
-            domain: "localhost",
+            domain: "18.191.31.73",
             httpOnly: true,
             signed: true,
         }
@@ -44,7 +44,7 @@ const handleCookieAndToken = (res, existingUser) => {
         token, 
         {
             path: "/",
-            domain: "localhost",
+            domain: "18.191.31.73",
             expires,
             httpOnly: true,
             signed: true,
@@ -163,7 +163,7 @@ export const userLogout = async (
                 COOKIE_NAME,
                 {
                     path: "/",
-                    domain: "localhost",
+                    domain: "18.191.31.73",
                     httpOnly: true,
                     signed: true,
                 }

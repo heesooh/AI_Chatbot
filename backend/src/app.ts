@@ -10,7 +10,7 @@ const app = express();
 
 // middlewares:
 // whitelist frontend port 5173
-app.use(cors({ origin: process.env.FRONTEND_URL, credentials: true }));
+app.use(cors({ origin: "http://18.191.31.73", credentials: true }));
 
 // JSON parser
 app.use(express.json());
@@ -19,6 +19,6 @@ app.use(cookieParser(process.env.COOKIE_SECRET));
 // Performance Tracker - Remove in production
 app.use(morgan("dev"));
 
-app.use(appRouter);
+app.use("/api", appRouter);
 
 export default app;
