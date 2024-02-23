@@ -28,8 +28,8 @@ const handleCookieAndToken = (res, existingUser) => {
     res.clearCookie(
         COOKIE_NAME,
         {
-            path: "/",
-            domain: ".onrender.com",
+            // path: "/",
+            // domain: ".onrender.com",
             httpOnly: true,
             signed: true,
             secure: true,
@@ -44,8 +44,8 @@ const handleCookieAndToken = (res, existingUser) => {
         COOKIE_NAME, 
         token, 
         {
-            path: "/",
-            domain: ".onrender.com",
+            // path: "/",
+            // domain: ".onrender.com",
             expires,
             httpOnly: true,
             signed: true,
@@ -164,8 +164,8 @@ export const userLogout = async (
             res.clearCookie(
                 COOKIE_NAME,
                 {
-                    path: "/",
-                    domain: ".onrender.com",
+                    // path: "/",
+                    // domain: ".onrender.com",
                     httpOnly: true,
                     signed: true,
                     secure: true,
