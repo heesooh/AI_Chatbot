@@ -11,7 +11,7 @@ const app = express();
 // middlewares:
 // whitelist frontend port 4173
 // app.use(cors({ origin: "http://localhost:4173", credentials: true }));
-app.use(cors({ origin: "https://heesoo-hwang.onrender.com", credentials: true }));
+app.use(cors({ origin: ["https://heesoo-hwang.onrender.com", "https://heesoohwang.com"], credentials: true }));
 
 // JSON parser
 app.use(express.json());
